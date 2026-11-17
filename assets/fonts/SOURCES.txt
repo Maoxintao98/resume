@@ -1,0 +1,8 @@
+标题字体：得意黑 Smiley Sans Oblique，atelierAnchor。
+https://atelier-anchor.com/typefaces/smiley-sans/
+国内镜像来源：https://registry.npmmirror.com/@chinese-fonts/dyh/-/dyh-3.0.0.tgz
+字体分包按原样保留，包完整性已按镜像元数据 SHA-512 核验；版权、字体许可信息也保留在字体与样式元数据中。
+旁注字体：文鼎 AR PL UKai CN，使用本机已安装的原字体裁取固定旁注字符，改名为 Xintao Notes，转成 WOFF。
+原文件：/usr/share/fonts/truetype/arphic/ukai.ttc
+数字与英文小标：DejaVu Sans Mono，使用本机原字体裁取，转成 WOFF。
+没有安装任何运行环境或改变系统字体。

@@ -1,0 +1,31 @@
+@import url("assets/fonts/smiley/result.css");
+@font-face{font-family:"Xintao Notes";src:url("assets/fonts/notes.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Xintao Mono";src:url("assets/fonts/mono.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+/* 标题像手绘电影海报，正文仍安静地承担阅读。 */
+:root{--display-font:"Smiley Sans Oblique","Noto Sans CJK SC",sans-serif;--note-font:"Xintao Notes","AR PL UKai CN",KaiTi,serif;--meta-font:"Xintao Mono","DejaVu Sans Mono",monospace}
+.wordmark{display:inline-block;font-family:var(--display-font);font-size:29px;font-weight:400;letter-spacing:1.1px;line-height:1;transform:rotate(-3deg);font-synthesis:none}
+.hero h1{font-family:var(--display-font);font-size:clamp(76px,8vw,112px);line-height:1.12;letter-spacing:-.012em;font-weight:400;font-synthesis:none;padding-top:3px}
+.hero h1 .serif{font-family:inherit;font-weight:inherit}
+.hero h1 .asterisk{font-family:Arial,sans-serif;font-size:43px;vertical-align:top;transform:translate(9px,6px) rotate(8deg)}
+h2,.journey-intro h2,.section-heading h2,.work-heading h2,.resume-layout h2,.closing h2{font-family:var(--display-font);font-weight:400;letter-spacing:.02em;font-synthesis:none}
+h2 .serif{font-family:inherit;font-weight:inherit}
+.about-layout>h2{font-size:44px;line-height:1.38}
+.journey-intro h2{font-size:40px;line-height:1.4}
+.section-heading h2{font-size:39px}
+.work-heading h2,.resume-layout h2{font-size:39px;line-height:1.4}
+.closing h2{font-size:56px;letter-spacing:.025em}
+.note h3,.note[aria-expanded=true] h3{font-family:var(--display-font);font-size:27px;font-weight:400;line-height:1.4;letter-spacing:.01em;font-synthesis:none}
+.work-card h3,.timeline h3{font-family:var(--display-font);font-weight:400;letter-spacing:.015em;font-synthesis:none}
+.timeline h3{font-size:23px}.work-card h3{font-size:27px}
+.hand-note,.portrait-aside,.closing-note,.portrait-stage .bubble,.bubble{font-family:var(--note-font);font-weight:400;font-style:normal;letter-spacing:.035em}
+.hand-note{font-size:17px;transform:rotate(-2deg)}
+.portrait-aside{font-size:15px;transform:rotate(-2deg)}
+.closing-note{font-size:17px;transform:rotate(-2deg)}
+.portrait-stage .bubble{font-size:13px;padding:9px 13px}
+.section-label>span:last-child,.art-meta>span:last-child,.timeline-date,.note-number,.work-card>.tiny-label,footer>span:first-child{font-family:var(--meta-font);font-weight:400;letter-spacing:.045em;font-variant-numeric:tabular-nums}
+.section-label>span:last-child{font-size:9px;letter-spacing:.08em}
+.experience-stamp strong{font-family:var(--display-font);font-size:70px;font-weight:400;letter-spacing:1px;transform:rotate(-4deg);transform-origin:left bottom}
+.eyebrow{letter-spacing:1.5px}.identity-note{letter-spacing:1.5px}
+@media(max-width:1100px){.hero h1{font-size:clamp(54px,7.4vw,82px)}.hero h1 .asterisk{font-size:32px;transform:translate(5px,4px) rotate(8deg)}.note h3,.note[aria-expanded=true] h3{font-size:24px}.work-card h3{font-size:25px}.journey-intro h2{font-size:35px}.hand-note{font-size:15px}.portrait-aside{font-size:13px}}
+@media(max-width:760px){.wordmark{font-size:26px;letter-spacing:.9px}.hero h1{font-size:clamp(56px,13.7vw,82px);line-height:1.16;letter-spacing:.005em}.hero h1 .asterisk{font-size:30px;transform:translate(4px,4px) rotate(8deg)}.about-layout>h2{font-size:35px;line-height:1.4}.journey-intro h2{font-size:34px}.section-heading h2{font-size:33px}.work-heading h2,.resume-layout h2{font-size:34px}.note h3,.note[aria-expanded=true] h3{font-size:28px}.timeline h3{font-size:23px}.work-card h3{font-size:27px}.closing h2{font-size:38px;letter-spacing:.015em}.section-label>span:last-child{font-size:8px;letter-spacing:.01em}.portrait-aside{font-size:12px}.portrait-stage .bubble{font-size:12px}.hand-note,.teaching-note>.hand-note{font-size:15px}.closing-note{font-size:16px}.experience-stamp strong{font-size:48px}}
+@media print{.wordmark{font-size:22px;transform:none}.hero h1{font-size:34px;letter-spacing:0;line-height:1.25}.hero h1 .asterisk{font-size:22px;transform:none}.about-layout>h2,.journey-intro h2,.section-heading h2,.work-heading h2,.resume-layout h2{font-size:22px;letter-spacing:0}.note h3,.note[aria-expanded=true] h3{font-size:16px}.work-card h3{font-size:15px}.timeline h3{font-size:14px}.experience-stamp strong{font-size:34px;transform:none}.hand-note,.teaching-note>.hand-note{font-size:10px}.section-label>span:last-child{font-size:8px}}

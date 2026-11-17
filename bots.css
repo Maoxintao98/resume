@@ -1,0 +1,171 @@
+/* 片场小家伙：圆球、软三角、胶囊和豆子。所有动作只走 transform / opacity。 */
+.has-bots{position:relative}
+.bot-squad{position:absolute;inset:0;pointer-events:none;z-index:4;contain:layout style}
+.squad--hero{z-index:4}
+.squad--hero-peek{z-index:1}
+.portrait-stage .portrait-paper{z-index:2}
+.squad--hero-bottom{z-index:2}
+.squad--hero-bottom .bot{--float:5px}
+.squad--notes .bot{z-index:6}
+.squad--frame{z-index:6}
+.squad--footer{z-index:3}
+.squad--closing{z-index:2}
+.bot{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:auto;overflow:visible;translate:-50% -50%;rotate:calc(var(--rot,0deg) + var(--page-lean,0deg));transform-origin:50% 86%;opacity:0;scale:.68;pointer-events:auto;cursor:default;transition:rotate .4s ease,scale .35s ease,opacity .45s ease;will-change:translate,rotate,scale}
+.bot.is-awake{opacity:1;scale:1}
+.bot.is-offscreen .bot__rig,.bot.is-offscreen .bot__eyes{animation-play-state:paused}
+.bot:hover{rotate:calc(var(--rot,0deg) + var(--page-lean,0deg) + 7deg)}
+.bot__rig{animation:bot-bob var(--dur,5.4s) ease-in-out var(--delay,0s) infinite;transform-box:fill-box;transform-origin:50% 100%}
+.bot__body{fill:var(--bot-body,#2d2b30);stroke:var(--bot-rim,transparent);stroke-width:1.25}
+.bot__eye{fill:var(--bot-eye,#fffdf6);stroke:none}
+.bot__face{transform:translate(var(--eye-x,0px),var(--eye-y,0px));transition:transform .14s linear}
+.bot__eyes{transform-box:fill-box;transform-origin:center;animation:bot-blink 6.4s linear var(--blink-delay,0s) infinite}
+.bot__eye--wink{transform-box:fill-box;transform-origin:center;animation:bot-wink 8.6s linear var(--wink-delay,0s) infinite}
+.bot.is-hopping .bot__rig{animation:bot-hop .5s cubic-bezier(.3,1.45,.4,1)}
+.bot--inline{position:relative;left:auto;top:auto;display:inline-block;width:var(--size);height:auto;translate:0 0;rotate:var(--rot,0deg);margin-left:7px;vertical-align:-.28em;opacity:1;scale:1;will-change:auto}
+.bot--inline .bot__rig{animation-name:bot-bob-inline}
+.bot--inline:hover{rotate:calc(var(--rot,0deg) + 9deg)}
+.bot--ink{--bot-body:#1b1b1f;--bot-eye:#fffdf6;--bot-rim:#ffffff1f}
+.bot--grape{--bot-body:#6c3bff;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--rose{--bot-body:#ff3d7f;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--peach{--bot-body:#ff6b2c;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--butter{--bot-body:#ffc300;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--mint{--bot-body:#00c48c;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--sky{--bot-body:#1e90ff;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--lilac{--bot-body:#a66cff;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.bot--coral{--bot-body:#ff4d4d;--bot-eye:#fffdf6;--bot-rim:#ffffff24}
+.night .bot--ink{--bot-body:#44414a}
+.night .bot--grape{--bot-body:#8560ff}
+.night .bot__body{stroke:#ffffff24}
+@keyframes bot-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(var(--float,14px) * -1))}}
+@keyframes bot-bob-inline{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes bot-blink{0%,92%,97%,100%{transform:scaleY(1)}94%,95%{transform:scaleY(.06)}}
+@keyframes bot-wink{0%,88%,94%,100%{transform:scaleY(1)}90%,92%{transform:scaleY(.08)}}
+@keyframes bot-hop{0%{transform:translateY(0) scale(1,1)}28%{transform:translateY(-14px) scale(.93,1.08)}58%{transform:translateY(0) scale(1.07,.93)}76%{transform:translateY(-3px) scale(.98,1.02)}100%{transform:translateY(0) scale(1,1)}}
+@keyframes bot-sway{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-4px) rotate(4deg)}}
+@keyframes bot-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes bot-peek{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes bot-bounce{0%,100%{transform:translateY(0) scale(1,1)}42%{transform:translateY(-12px) scale(.94,1.06)}68%{transform:translateY(0) scale(1.07,.93)}}
+@keyframes bot-nod{0%,100%{transform:translateY(0)}30%{transform:translateY(4px)}62%{transform:translateY(-2px)}}
+@keyframes bot-wobble{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes bot-flutter{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)}}
+@keyframes bot-lean{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(0deg)}}
+@keyframes bot-squish{0%,100%{transform:scale(1.06,.94)}50%{transform:scale(.96,1.04)}}
+@keyframes bot-twist{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(6deg) translateY(-2px)}}
+@keyframes bot-roll{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+@keyframes bot-jump{
+  0%,8%,100%{transform:translateY(0) scale(1,1)}
+  14%{transform:translateY(2px) scale(1.1,.9)}
+  30%{transform:translateY(-34px) scale(.94,1.06)}
+  45%{transform:translateY(0) scale(1.12,.88)}
+  54%{transform:translateY(-8px) scale(1,1)}
+  62%,100%{transform:translateY(0) scale(1,1)}
+}
+@keyframes bot-tremble{
+  0%,100%{transform:rotate(0)}
+  8%{transform:rotate(-3deg)}
+  12%{transform:rotate(3deg)}
+  16%{transform:rotate(-3deg)}
+  20%{transform:rotate(3deg)}
+  24%{transform:rotate(0)}
+}
+@keyframes bot-collapse{
+  0%,6%,100%{transform:rotate(0) translateY(0)}
+  8%{transform:rotate(-3deg)}
+  10%{transform:rotate(3deg)}
+  12%{transform:rotate(-3deg)}
+  15%{transform:rotate(3deg)}
+  22%{transform:rotate(78deg) translateY(0)}
+  28%,55%{transform:rotate(78deg) translateY(0)}
+  65%{transform:rotate(42deg)}
+  74%{transform:rotate(-8deg)}
+  82%,100%{transform:rotate(0)}
+}
+@keyframes bot-barrel{
+  0%,15%{transform:rotate(0)}
+  52%,70%{transform:rotate(360deg)}
+  100%{transform:rotate(360deg)}
+}
+@keyframes flower-turn{to{transform:rotate(360deg)}}
+.bot--motion-sway .bot__rig{animation-name:bot-sway;animation-duration:3.2s}
+.bot--motion-pulse .bot__rig{animation-name:bot-pulse;animation-duration:2.4s}
+.bot--motion-peek .bot__rig{animation-name:bot-peek;animation-duration:3.2s}
+.bot--motion-bounce .bot__rig{animation-name:bot-bounce;animation-duration:1.6s}
+.bot--motion-nod .bot__rig{animation-name:bot-nod;animation-duration:1.5s}
+.bot--motion-wobble .bot__rig{animation-name:bot-wobble;animation-duration:2.4s}
+.bot--motion-flutter .bot__rig{animation-name:bot-flutter;animation-duration:.9s}
+.bot--motion-lean .bot__rig{animation-name:bot-lean;animation-duration:3s}
+.bot--motion-squish .bot__rig{animation-name:bot-squish;animation-duration:1.8s}
+.bot--motion-twist .bot__rig{animation-name:bot-twist;animation-duration:2.2s}
+.bot--motion-roll .bot__rig{animation-name:bot-roll;animation-duration:2.6s}
+.bot--motion-jump .bot__rig{animation-name:bot-jump;animation-duration:3s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+.bot--motion-tremble .bot__rig{animation-name:bot-tremble;animation-duration:2s;animation-timing-function:linear}
+.bot--motion-collapse .bot__rig{animation-name:bot-collapse;animation-duration:5s}
+.bot--motion-barrel .bot__rig{animation-name:bot-barrel;animation-duration:3.6s;transform-origin:50% 50%}
+.bot.is-offscreen{animation-play-state:paused}
+.bot__flower{transform-box:fill-box;transform-origin:center;animation:flower-turn 9s linear infinite}
+/* 页头的小家伙和主家伙也补上呼吸感。 */
+.mini-friend{transition:rotate .35s ease,scale .35s ease;animation:mini-bob 5.2s ease-in-out infinite}
+.identity:hover .mini-friend{rotate:-12deg;scale:1.12}
+.mini-friend i{animation:mini-blink 5.6s infinite}
+@keyframes mini-bob{0%,100%{translate:0 0}50%{translate:0 -1.5px}}
+@keyframes mini-blink{0%,90%,96%,100%{scale:1 1}92%,94%{scale:1 .12}}
+#friend.is-bouncing .body-shape{animation:friend-bounce .62s cubic-bezier(.3,1.5,.4,1)}
+@keyframes friend-bounce{0%{transform:rotate(-6deg) scale(1,1)}30%{transform:rotate(-8deg) scale(.94,1.08)}62%{transform:rotate(-4deg) scale(1.06,.94)}100%{transform:rotate(-6deg) scale(1,1)}}
+#friend-speech.is-popping{animation:bubble-pop .32s cubic-bezier(.3,1.5,.4,1)}
+@keyframes bubble-pop{0%{scale:.92;opacity:.55}100%{scale:1;opacity:1}}
+@media(max-width:760px){
+  .squad--hero .bot:nth-child(n+4){display:none}
+  .squad--hero .bot:nth-child(1){--x:57%!important;--y:-1%!important;--size:23px!important;--rot:-6deg!important}
+  .squad--hero .bot:nth-child(3){--x:97%!important;--y:70%!important;--size:20px!important}
+  .squad--about .bot:nth-child(3){display:none}
+  .squad--about .bot:nth-child(1){--x:95%!important;--y:0%!important;--size:24px!important}
+  .squad--about .bot:nth-child(2){--x:4%!important;--y:97%!important;--size:18px!important}
+  .squad--resume{display:none}
+  .squad--journey-line .bot{--x:3.4%!important;--size:20px!important}
+  .squad--closing .bot:nth-child(n+4){display:none}
+  .squad--closing .bot:nth-child(1){--x:8%!important;--y:50%!important;--size:22px!important}
+  .squad--closing .bot:nth-child(2){--x:7%!important;--y:69%!important;--size:26px!important}
+  .squad--closing .bot:nth-child(3){--x:92%!important;--y:53%!important;--size:19px!important}
+  .squad--footer .bot:nth-child(2){display:none}
+  .squad--hero-bottom .bot{--size:15px!important}
+  .bot--inline{width:16px;margin-left:5px;vertical-align:-.3em}
+}
+@media(prefers-reduced-motion:reduce){
+  .bot,.bot__rig,.bot__eyes,.bot__flower,.mini-friend,.mini-friend i,.body-shape,.friend-shadow{animation:none!important;transition:none!important}
+  .bot{opacity:1!important;scale:1!important;translate:-50% -50%!important}
+  .bot--inline{translate:0 0!important;scale:1!important}
+}
+@media print{.bot-squad,.bot--inline{display:none!important}}
+.frame-drawing.has-actor i{opacity:0}
+/* 不画四肢，也不画嘴。只留身体、眼睛和一小块影子。 */
+.bot .foot,.bot .mouth{display:none}
+.portrait-stage .friend .foot,.portrait-stage .friend .mouth{display:none}
+
+/* 大黑豆子已移除，原作台词气泡一并收起。 */
+.portrait-stage .bubble{display:none}
+
+/* 纵向相纸：高度跟着宽度走，不随页面缩放被压扁。 */
+.hero-art{width:100%;max-width:500px;margin-left:auto}
+.portrait-stage{width:100%;height:auto!important;aspect-ratio:4/5}
+.portrait-paper{height:100%}
+.portrait-paper img{object-position:50% 30%}
+@media(max-width:1100px){
+  .portrait-stage{height:auto!important}
+}
+@media(max-width:760px){
+  .hero-art{max-width:none;margin-left:0}
+  .portrait-stage{height:auto!important;aspect-ratio:4/5}
+  .portrait-paper img{object-position:50% 26%}
+}
+
+/* 时间线节点：角色站在竖线左侧，不压在线上。 */
+.timeline li:before{display:none}
+.timeline-node{position:absolute;left:0;top:0;width:0;height:0;z-index:2;pointer-events:none}
+
+/* 照片区文案清掉后，重新对齐照片与控制按钮。 */
+.portrait-stage{margin-top:24px}
+.portrait-controls{justify-content:flex-end}
+@media(max-width:760px){
+  .portrait-stage{margin-top:0}
+  .portrait-controls{justify-content:center}
+}
